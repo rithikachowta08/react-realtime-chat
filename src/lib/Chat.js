@@ -45,18 +45,21 @@ class Chat extends Component {
     this.initialize();
   }
 
+  // Input field change handler
   updateStateOnChange = event => {
     if (!event.target.value || event.target.value.trim()) {
       this.setState({ currentMessage: event.target.value });
     }
   };
 
+  // Enter key handler
   handleKeyPress = event => {
     if (event.key === 'Enter') {
       this.sendMessage();
     }
   };
 
+  // Initialize firebase app and fetch all messages in current chat-room
   initialize = () => {
     firebase.initializeApp(this.props.config);
     dbRef = firebase.database();
@@ -68,6 +71,7 @@ class Chat extends Component {
     this.setChatListener();
   };
 
+  // Listen for updates to chat-room, dispatch action to update UI
   setChatListener = () => {
     dbRef
       .ref(this.chatRoom)
@@ -81,6 +85,7 @@ class Chat extends Component {
       });
   };
 
+  // Write message to chat-room and reset state
   sendMessage = () => {
     this.state.currentMessage &&
       firebase

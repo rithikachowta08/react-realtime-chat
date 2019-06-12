@@ -1,9 +1,12 @@
+@import './common.scss';
+
 .chat-section {
 height:100%;
 box-sizing: border-box;
 padding: 2em;
 flex-direction: column;
 position: relative;
+
 .chat-messages-container {
   height: 90%;
   overflow-y: auto;
@@ -12,4 +15,24 @@ position: relative;
   margin-bottom: 1em;
   scroll-behavior: smooth;
 }
+
+// Scroll bar styling
+
+::-webkit-scrollbar-track
+{
+	background-color: $lightest-grey;
+}
+
+::-webkit-scrollbar
+{
+  width: 8px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: $light-grey;
+  border-radius: 2px;  
+}
+
 }
