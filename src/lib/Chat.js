@@ -15,6 +15,7 @@ import ACTIONS from './actions.constants';
 
 import ChatInput from './ChatInput/ChatInput';
 import ChatBody from './ChatBody';
+import spinner from './images/spinner.gif';
 import './Chat.scss';
 
 let dbRef;
@@ -102,16 +103,23 @@ class Chat extends Component {
   };
 
   render() {
+    const { error, isFetching, messages } = this.props.chat;
     return (
       <Provider store={store}>
         <div className="chat-section">
-          <ChatBody messages={this.props.chat.messages} />
+          {isFetching && (
+            <div class="loader">
+              <img src={spinner} alt="Loading messages" />
+            </div>
+          )}
+          <ChatBody messages={messages} />
           <ChatInput
             value={this.state.currentMessage}
             changeHandler={this.updateStateOnChange}
             clickHandler={this.sendMessage}
             enterKeyHandler={this.handleKeyPress}
           />
+          {error && <div className="error">Oops! Something went wrong!</div>}
         </div>
       </Provider>
     );

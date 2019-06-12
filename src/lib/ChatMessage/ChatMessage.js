@@ -18,19 +18,9 @@ const ChatMessage = props => (
       />
     )}
     {props.fromSelf ? (
-      <MyMessageBody messageText={props.messageText}>
-        {props.children &&
-          React.cloneElement(props.children, {
-            isLoading: props.verificationInProgress
-          })}
-      </MyMessageBody>
+      <MyMessageBody messageText={props.messageText} />
     ) : (
-      <TheirMessageBody messageText={props.messageText}>
-        {props.children &&
-          React.cloneElement(props.children, {
-            isLoading: props.verificationInProgress
-          })}
-      </TheirMessageBody>
+      <TheirMessageBody messageText={props.messageText} />
     )}
   </div>
 );
@@ -42,28 +32,18 @@ ChatMessage.propTypes = {
   id: PropTypes.string,
   avatarUrl: PropTypes.string,
   withHeader: PropTypes.bool,
-  verificationInProgress: PropTypes.bool,
   fromSelf: PropTypes.bool,
-  timeStamp: PropTypes.string,
-  children: PropTypes.object,
-  actions: PropTypes.array,
-  onAction: PropTypes.func,
-  openConfirmationModal: PropTypes.func
+  timeStamp: PropTypes.string
 };
 
 ChatMessage.defaultProps = {
   id: '',
-  children: null,
   userName: '',
   separatorDate: '',
   avatarUrl: '',
   timeStamp: '',
   withHeader: false,
-  fromSelf: false,
-  verificationInProgress: false,
-  actions: [],
-  onAction: () => {},
-  openConfirmationModal: () => {}
+  fromSelf: false
 };
 
 export default ChatMessage;

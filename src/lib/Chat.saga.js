@@ -32,6 +32,6 @@ export function* updateChatState(action) {
       });
     }
   } catch (e) {
-    yield put({ type: ACTIONS.UPDATE_CHAT_FAIL, payload: e });
+    console.log(e);
   }
 }

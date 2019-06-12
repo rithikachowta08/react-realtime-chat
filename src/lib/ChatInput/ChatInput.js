@@ -13,10 +13,10 @@ const ChatInput = props => {
         value={props.value}
         onChange={props.changeHandler}
         onKeyPress={props.enterKeyHandler}
-        placeholder="Type Something..."
+        placeholder="Enter message"
       />
       <img
-        className="chat-icon clickable"
+        className="chat-icon"
         src={sendBtn}
         alt="send icon"
         onClick={props.clickHandler}
@@ -33,8 +33,7 @@ ChatInput.propTypes = {
 };
 
 ChatInput.defaultProps = {
-  value: '',
-  disabled: false
+  value: ''
 };
 
 export default ChatInput;

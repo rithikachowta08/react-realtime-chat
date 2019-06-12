@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ChatMessage from './ChatMessage/ChatMessage';
 
 class ChatBody extends Component {
+  // Auto scroll chat to bottom whenever messages prop changes
   componentDidUpdate(prevProps) {
     const elem = document.querySelector('.chat-messages-container');
     if (

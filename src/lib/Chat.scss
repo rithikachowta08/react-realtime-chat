@@ -16,6 +16,27 @@ position: relative;
   scroll-behavior: smooth;
 }
 
+// loader styling
+
+.loader{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// error message styling
+.error{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-family: $primary-font;
+  color: $danger-color;
+  font-weight: bold;
+}
+
 // Scroll bar styling
 
 ::-webkit-scrollbar-track
@@ -26,13 +47,13 @@ position: relative;
 ::-webkit-scrollbar
 {
   width: 8px;
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb
 {
   background-color: $light-grey;
-  border-radius: 2px;  
+  border-radius: 10px;  
 }
 
 }

@@ -6,7 +6,9 @@ import {
 import ACTIONS from './actions.constants';
 
 const initialState = {
-  messages: []
+  messages: [],
+  error: '',
+  isFetching: false
 };
 
 const messageIsNotDuplicate = (tempMessages, messageId) => {
@@ -15,6 +17,13 @@ const messageIsNotDuplicate = (tempMessages, messageId) => {
 
 const chat = (state = initialState, { type, payload, data }) => {
   switch (type) {
+    case ACTIONS.FETCH_CHAT: {
+      return {
+        ...state,
+        error: '',
+        isFetching: true
+      };
+    }
     case ACTIONS.FETCH_CHAT_SUCCESS: {
       const tempState = Object.assign({}, state);
       tempState.messages = prepareMessages(
@@ -22,6 +31,7 @@ const chat = (state = initialState, { type, payload, data }) => {
         data.receiver,
         data.currentUserId
       );
+      tempState.isFetching = false;
       return tempState;
     }
 
@@ -45,12 +55,10 @@ const chat = (state = initialState, { type, payload, data }) => {
     }
 
     case ACTIONS.FETCH_CHAT_FAIL:
-    case ACTIONS.UPDATE_CHAT_FAIL:
       return {
         ...state,
-        error: {
-          message: payload
-        },
+        error: payload,
+        isFetching: false,
         messages: []
       };
     default:
