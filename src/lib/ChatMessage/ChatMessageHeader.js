@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import avatar from '../../images/avatar.png';
+import avatar from '../images/avatar.png';
 
 const ChatMessageHeader = props => {
   const getSelfHeader = () => (

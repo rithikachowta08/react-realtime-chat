@@ -2,7 +2,7 @@ import {
   setHeaderDisplay,
   prepareMessages,
   setMessageProps
-} from '../utils/chat-service';
+} from './utils/chat-service';
 import ACTIONS from './actions.constants';
 
 const initialState = {

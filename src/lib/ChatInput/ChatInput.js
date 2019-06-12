@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import sendBtn from '../../images/send.png';
+import sendBtn from '../images/send.png';
 import './ChatInput.scss';
 
 const ChatInput = props => {
