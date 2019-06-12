@@ -37,11 +37,12 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    const { currentUser, receiver } = this.props;
+    const { currentUserId, receiver } = this.props;
+    // chat-room is always named by sender and receiver names arranged lexicographically
     this.chatRoom =
-      currentUser > receiver
-        ? `${receiver}-${currentUser}`
-        : `${currentUser}-${receiver}`;
+      currentUserId > receiver.id
+        ? `${receiver.id}-${currentUserId}`
+        : `${currentUserId}-${receiver.id}`;
     this.initialize();
   }
 
@@ -65,8 +66,8 @@ class Chat extends Component {
     dbRef = firebase.database();
     this.props.fetchChat({
       CHAT_URL: this.chatRoom,
-      currentUser: this.props.currentUser,
-      senderImage: this.props.senderImage
+      currentUserId: this.props.currentUserId,
+      receiver: this.props.receiver
     });
     this.setChatListener();
   };
@@ -79,8 +80,8 @@ class Chat extends Component {
       .on('value', snapshot => {
         this.props.updateChatState({
           snapshot: snapshot.val(),
-          currentUser: this.props.currentUser,
-          senderImage: this.props.senderImage
+          currentUserId: this.props.currentUserId,
+          receiver: this.props.receiver
         });
       });
   };
@@ -92,8 +93,8 @@ class Chat extends Component {
         .database()
         .ref(this.chatRoom)
         .push({
-          from: this.props.currentUser,
-          to: this.props.receiver,
+          from: this.props.currentUserId,
+          to: this.props.receiver.id,
           text: this.state.currentMessage,
           timestamp: getTime(new Date()) / 1000
         });
@@ -118,22 +119,12 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-  messages: PropTypes.array,
-  config: PropTypes.object,
-  currentMessage: PropTypes.string,
-  changeHandler: PropTypes.func,
-  clickHandler: PropTypes.func,
-  enterKeyHandler: PropTypes.func
+  config: PropTypes.object.isRequired,
+  receiver: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired
 };
 
-Chat.defaultProps = {
-  messages: [],
-  config: {},
-  currentMessage: '',
-  changeHandler: () => {},
-  clickHandler: () => {},
-  enterKeyHandler: () => {}
-};
+Chat.defaultProps = {};
 
 const connectWithStore = (store, WrappedComponent, ...args) => {
   var ConnectedWrappedComponent = connect(...args)(WrappedComponent);

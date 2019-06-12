@@ -1,24 +1,20 @@
 import { call, put } from 'redux-saga/effects';
 import ACTIONS from './actions.constants';
 
-const getPrivateChat = (CHAT_URL, dbRef) =>
+const getChat = (CHAT_URL, dbRef) =>
   dbRef
     .ref(CHAT_URL)
     .once('value')
-    .then(privateSnapshot => privateSnapshot.val());
+    .then(snapshot => snapshot.val());
 
 export function* fetchChat(action) {
-  let privateChat = {};
+  let chat = {};
   try {
-    privateChat = yield call(
-      getPrivateChat,
-      action.data.CHAT_URL,
-      action.dbRef
-    );
+    chat = yield call(getChat, action.data.CHAT_URL, action.dbRef);
     yield put({
       type: ACTIONS.FETCH_CHAT_SUCCESS,
       data: action.data,
-      payload: privateChat
+      payload: chat
     });
   } catch (e) {
     yield put({ type: ACTIONS.FETCH_CHAT_FAIL, payload: e });

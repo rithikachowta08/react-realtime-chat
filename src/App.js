@@ -15,9 +15,13 @@ function App() {
           messagingSenderId: '249012927295',
           appId: '1:249012927295:web:035ae95584ff77d4'
         }}
-        currentUser="rithika"
-        receiver="vaishakh"
-        senderImage="https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg"
+        currentUserId="rithika"
+        receiver={{
+          name: 'vaishakh',
+          id: 'vaishakh',
+          imageUrl:
+            'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
+        }}
       />
     </div>
   );

@@ -2,11 +2,15 @@ import {
   setHeaderDisplay,
   prepareMessages,
   setMessageProps
-} from '../utils/ChatService';
+} from '../utils/chat-service';
 import ACTIONS from './actions.constants';
 
 const initialState = {
   messages: []
+};
+
+const messageIsNotDuplicate = (tempMessages, messageId) => {
+  return tempMessages.filter(msg => msg.id === messageId).length <= 0;
 };
 
 const chat = (state = initialState, { type, payload, data }) => {
@@ -15,8 +19,8 @@ const chat = (state = initialState, { type, payload, data }) => {
       const tempState = Object.assign({}, state);
       tempState.messages = prepareMessages(
         payload,
-        data.senderImage,
-        data.currentUser
+        data.receiver,
+        data.currentUserId
       );
       return tempState;
     }
@@ -24,15 +28,15 @@ const chat = (state = initialState, { type, payload, data }) => {
     case ACTIONS.UPDATE_CHAT_SUCCESS: {
       const tempState = Object.assign({}, state);
       const tempMessages = Object.assign([], state.messages);
-      if (
-        tempMessages.filter(msg => msg.id === payload.messageId).length <= 0
-      ) {
+      // Check if new message is already in the list before updating it
+      // Necessary since firebase rtdb 'on' callback triggers for the first time with no change
+      if (messageIsNotDuplicate(tempMessages, payload.messageId)) {
         tempMessages.push(
           setMessageProps(
             payload.message,
             payload.messageId,
-            data.senderImage,
-            data.currentUser
+            data.receiver,
+            data.currentUserId
           )
         );
       }
