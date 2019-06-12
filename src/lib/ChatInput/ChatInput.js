@@ -14,6 +14,7 @@ const ChatInput = props => {
         onChange={props.changeHandler}
         onKeyPress={props.enterKeyHandler}
         placeholder="Enter message"
+        autocomplete="off"
       />
       <img
         className="chat-icon"

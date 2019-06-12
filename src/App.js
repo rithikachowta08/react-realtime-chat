@@ -17,7 +17,7 @@ function App() {
         }}
         currentUserId="45878"
         receiver={{
-          name: 'Vaishakh',
+          name: 'Rithika',
           id: '129090',
           imageUrl:
             'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
