@@ -107,12 +107,13 @@ class Chat extends Component {
     return (
       <Provider store={store}>
         <div className="chat-section">
+          {error && <div className="error">Oops! Something went wrong!</div>}
           {isFetching && (
             <div className="centered-container">
               <img src={spinner} alt="Loading messages" />
             </div>
           )}
-          {!isFetching && !messages.length && (
+          {!isFetching && messages && !messages.length && (
             <div className="centered-container no-message">
               No messages yet! Say hi!
             </div>
@@ -124,7 +125,6 @@ class Chat extends Component {
             clickHandler={this.sendMessage}
             enterKeyHandler={this.handleKeyPress}
           />
-          {error && <div className="error">Oops! Something went wrong!</div>}
         </div>
       </Provider>
     );

@@ -61,7 +61,7 @@ const chat = (state = initialState, { type, payload, data }) => {
         ...state,
         error: payload,
         isFetching: false,
-        messages: []
+        messages: null
       };
     default:
       return state;
