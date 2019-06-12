@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MyMessageBody = props => (
-  <div className="chat-body green">
+  <div className="chat-body self">
     {props.messageText}
     {props.children}
   </div>

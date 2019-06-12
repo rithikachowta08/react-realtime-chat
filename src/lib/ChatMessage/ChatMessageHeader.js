@@ -5,7 +5,7 @@ import tekachat from '../../images/tekachat.png';
 const ChatMessageHeader = props => {
   const getSelfHeader = () => (
     <div className="chat-header self">
-      <span className="small-text">you • </span>
+      <span className="small-text">you | </span>
       <span className="small-text">{props.timeStamp}</span>
     </div>
   );
@@ -13,7 +13,7 @@ const ChatMessageHeader = props => {
   const getTheirHeader = () => (
     <div className="chat-header">
       <img src={props.avatarUrl || tekachat} alt="user" />
-      <span className="small-text">{props.userName} • </span>
+      <span className="small-text">{props.userName} | </span>
       <span className="small-text">{props.timeStamp}</span>
     </div>
   );

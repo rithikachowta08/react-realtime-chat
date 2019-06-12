@@ -6,20 +6,22 @@ import 'firebase/auth';
 import 'firebase/database';
 import { getTime } from 'date-fns';
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import RootSaga from './rootSaga';
-import { messages } from './Chat.reducer';
+import chat from './Chat.reducer';
 import ACTIONS from './actions.constants';
 
 import ChatInput from './ChatInput/ChatInput';
 import ChatBody from './ChatBody';
+import './Chat.scss';
 
+let dbRef;
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  messages,
+  combineReducers({ chat }),
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 sagaMiddleware.run(function*() {
@@ -34,6 +36,15 @@ class Chat extends Component {
     };
   }
 
+  componentDidMount() {
+    const { currentUser, receiver } = this.props;
+    this.chatRoom =
+      currentUser > receiver
+        ? `${receiver}-${currentUser}`
+        : `${currentUser}-${receiver}`;
+    this.initialize();
+  }
+
   updateStateOnChange = event => {
     if (!event.target.value || event.target.value.trim()) {
       this.setState({ currentMessage: event.target.value });
@@ -46,16 +57,38 @@ class Chat extends Component {
     }
   };
 
+  initialize = () => {
+    firebase.initializeApp(this.props.config);
+    dbRef = firebase.database();
+    this.props.fetchChat({
+      CHAT_URL: this.chatRoom,
+      currentUser: this.props.currentUser,
+      senderImage: this.props.senderImage
+    });
+    this.setChatListener();
+  };
+
+  setChatListener = () => {
+    dbRef
+      .ref(this.chatRoom)
+      .limitToLast(1)
+      .on('value', snapshot => {
+        this.props.updateChatState({
+          snapshot: snapshot.val(),
+          currentUser: this.props.currentUser,
+          senderImage: this.props.senderImage
+        });
+      });
+  };
+
   sendMessage = () => {
     this.state.currentMessage &&
       firebase
         .database()
-        .ref(
-          `chat-coll/${this.props.workOrderInfo.info.chatroomKey}/conversation`
-        )
+        .ref(this.chatRoom)
         .push({
           from: this.props.currentUser,
-          to: this.props.workOrderInfo.info.tek.userId,
+          to: this.props.receiver,
           text: this.state.currentMessage,
           timestamp: getTime(new Date()) / 1000
         });
@@ -65,7 +98,7 @@ class Chat extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="col col-6 d-flex chat-section">
+        <div className="chat-section">
           <ChatBody messages={this.props.chat.messages} />
           <ChatInput
             value={this.state.currentMessage}
@@ -81,6 +114,7 @@ class Chat extends Component {
 
 Chat.propTypes = {
   messages: PropTypes.array,
+  config: PropTypes.object,
   currentMessage: PropTypes.string,
   changeHandler: PropTypes.func,
   clickHandler: PropTypes.func,
@@ -89,10 +123,18 @@ Chat.propTypes = {
 
 Chat.defaultProps = {
   messages: [],
+  config: {},
   currentMessage: '',
   changeHandler: () => {},
   clickHandler: () => {},
   enterKeyHandler: () => {}
+};
+
+const connectWithStore = (store, WrappedComponent, ...args) => {
+  var ConnectedWrappedComponent = connect(...args)(WrappedComponent);
+  return function(props) {
+    return <ConnectedWrappedComponent {...props} store={store} />;
+  };
 };
 
 const mapStateToProps = state => ({
@@ -101,14 +143,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchChat: data => {
-    dispatch({ type: ACTIONS.FETCH_CHAT, data });
+    dispatch({ type: ACTIONS.FETCH_CHAT, data, dbRef });
   },
   updateChatState: data => {
     dispatch({ type: ACTIONS.UPDATE_CHAT, data });
   }
 });
 
-export default connect(
+export default connectWithStore(
+  store,
+  Chat,
   mapStateToProps,
   mapDispatchToProps
-)(Chat);
+);

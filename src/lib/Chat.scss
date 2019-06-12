@@ -1,0 +1,15 @@
+.chat-section {
+height:100%;
+box-sizing: border-box;
+padding: 2em;
+flex-direction: column;
+position: relative;
+.chat-messages-container {
+  height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: content-box;
+  margin-bottom: 1em;
+  scroll-behavior: smooth;
+}
+}

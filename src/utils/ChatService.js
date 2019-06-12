@@ -4,6 +4,7 @@ import {
   getTimeFromUnixTime,
   getDateFromUnixTime
 } from './timeFunctions';
+import DEFAULT_AVATAR from '../images/avatar.png';
 
 const dateFormat = 'MM/DD/YYYY';
 const setHeaderDisplay = messages => {
@@ -20,10 +21,7 @@ const setHeaderDisplay = messages => {
     ) {
       currentMessage.withHeader = false;
     }
-    const currentMessageDate = getDateFromUnixTime(
-      currentMessage.unixTime,
-      dateFormat
-    );
+    const currentMessageDate = getDateFromUnixTime(currentMessage.unixTime);
     const today = format(new Date(), dateFormat);
     if (
       previousMessage &&
@@ -41,27 +39,24 @@ const setHeaderDisplay = messages => {
   return newMessages;
 };
 
-const setMessageProps = (message, id, tekInfo, currentUser) => {
+const setMessageProps = (message, id, senderImage, currentUser) => {
   const newMessage = {};
   newMessage.id = id;
   newMessage.fromSelf = message.from === currentUser;
   newMessage.messageText = message.text;
   newMessage.userName = message.from;
-  if (tekInfo && message.from === tekInfo.userId) {
-    newMessage.userName = tekInfo.firstName;
-    newMessage.avatarUrl = tekInfo.imageUrl;
-  }
+  newMessage.avatarUrl = senderImage || DEFAULT_AVATAR;
   newMessage.unixTime = message.timestamp;
   newMessage.timeStamp = getTimeFromUnixTime(message.timestamp);
   return newMessage;
 };
 
 // set properties for every message
-const prepareMessages = (messages, tekInfo, currentUser) => {
+const prepareMessages = (messages, sender, currentUser) => {
   const preparedMessages = [];
   Object.keys(messages).forEach(id => {
     preparedMessages.push(
-      setMessageProps(messages[id], id, tekInfo, currentUser)
+      setMessageProps(messages[id], id, sender, currentUser)
     );
   });
   const sortedMessages = sortByTimestamp(preparedMessages);

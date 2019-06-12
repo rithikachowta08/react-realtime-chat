@@ -1,21 +1,9 @@
+@import '../common.scss';
+
 .chat-message-wrapper {
   position: relative;
   clear: both;
   padding: 0 15px;
-
-  button,
-  .chat-info {
-    margin-top: 1em;
-  }
-
-
-  .separator {
-    margin: 0;
-  }
-  .separator hr,
-  .separator .hr-text:after {
-    background-color: #ccc;
-  }
 }
 
 .chat-body {
@@ -26,19 +14,43 @@
   position: relative;
   padding: 12px 20px;
   border-radius: 10px;
-  box-shadow: 0 8px 19px 0 rgba(0, 0, 0, .1);
-  background-color: #fff;
+  background-color: $lightest-grey;
+  font-family: $secondary-font;
+  &:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  top: 0px;
+  left: -10px;
+	right: auto;
+	bottom: auto;
+	border: 10px solid;
+	border-color: $lightest-grey transparent transparent transparent;
+}
 }
 
-.chat-body.green {
+.chat-body.self {
   float: right;
-  color: #fff;
+  color: $primary-color;
   border-radius: 8px;
-  background-color: teal;
+  background-color: $secondary-color;
+  &:after{
+    top: auto;
+    left: auto;
+    right: 0px;
+    bottom: -10px;
+    border: 10px solid;
+    border-color: $secondary-color $secondary-color transparent transparent;
+  }
 }
 
 .chat-header {
+  text-align: left;
   margin-bottom: .5em;
+  font-family: $primary-font;
+  color: $grey;
+  font-size: 12px;
 }
 
 .chat-header.self {

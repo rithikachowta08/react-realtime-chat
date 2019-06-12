@@ -1,4 +1,4 @@
-import { fromUnixTime, format } from 'date-fns';
+import { format } from 'date-fns';
 
 export const sortByTimestamp = messages => {
   messages.sort(
@@ -8,10 +8,11 @@ export const sortByTimestamp = messages => {
 };
 
 export const getDateFromUnixTime = unixTime => {
-  const result = fromUnixTime(unixTime);
-  console.log(new Date(result));
-  return format(new Date(result), 'MM/DD/YYYY');
+  const date = new Date(unixTime * 1000);
+  return format(date, 'MM/DD/YYYY');
 };
 
-export const getTimeFromUnixTime = unixTime =>
-  format.unix(unixTime).format('hh:mm A');
+export const getTimeFromUnixTime = unixTime => {
+  const date = new Date(unixTime * 1000);
+  return format(date, 'hh:mm A');
+};
