@@ -4,7 +4,6 @@ import {
   getTimeFromUnixTime,
   getDateFromUnixTime
 } from './timeFunctions';
-import DEFAULT_AVATAR from '../images/avatar.png';
 
 const dateFormat = 'MM/DD/YYYY';
 const setHeaderDisplay = messages => {
@@ -45,7 +44,7 @@ const setMessageProps = (message, id, senderImage, currentUser) => {
   newMessage.fromSelf = message.from === currentUser;
   newMessage.messageText = message.text;
   newMessage.userName = message.from;
-  newMessage.avatarUrl = senderImage || DEFAULT_AVATAR;
+  newMessage.avatarUrl = senderImage;
   newMessage.unixTime = message.timestamp;
   newMessage.timeStamp = getTimeFromUnixTime(message.timestamp);
   return newMessage;

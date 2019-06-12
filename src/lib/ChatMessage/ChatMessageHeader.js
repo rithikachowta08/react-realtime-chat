@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import tekachat from '../../images/tekachat.png';
+import avatar from '../../images/avatar.png';
 
 const ChatMessageHeader = props => {
   const getSelfHeader = () => (
@@ -12,7 +12,7 @@ const ChatMessageHeader = props => {
 
   const getTheirHeader = () => (
     <div className="chat-header">
-      <img src={props.avatarUrl || tekachat} alt="user" />
+      <img src={props.avatarUrl || avatar} alt="user" />
       <span className="small-text">{props.userName} | </span>
       <span className="small-text">{props.timeStamp}</span>
     </div>
