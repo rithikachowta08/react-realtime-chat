@@ -26,11 +26,13 @@ const chat = (state = initialState, { type, payload, data }) => {
     }
     case ACTIONS.FETCH_CHAT_SUCCESS: {
       const tempState = Object.assign({}, state);
-      tempState.messages = prepareMessages(
-        payload,
-        data.receiver,
-        data.currentUserId
-      );
+      if (payload) {
+        tempState.messages = prepareMessages(
+          payload,
+          data.receiver,
+          data.currentUserId
+        );
+      }
       tempState.isFetching = false;
       return tempState;
     }

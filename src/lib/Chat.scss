@@ -18,11 +18,19 @@ position: relative;
 
 // loader styling
 
-.loader{
+.centered-container{
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+// no message styling
+.no-message{
+  font-size: 22px;
+  font-family: $primary-font;
+  color: $secondary-color;
+  font-weight: bold;
 }
 
 // error message styling

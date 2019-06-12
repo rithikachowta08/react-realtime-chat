@@ -108,8 +108,13 @@ class Chat extends Component {
       <Provider store={store}>
         <div className="chat-section">
           {isFetching && (
-            <div class="loader">
+            <div className="centered-container">
               <img src={spinner} alt="Loading messages" />
+            </div>
+          )}
+          {!isFetching && !messages.length && (
+            <div className="centered-container no-message">
+              No messages yet! Say hi!
             </div>
           )}
           <ChatBody messages={messages} />

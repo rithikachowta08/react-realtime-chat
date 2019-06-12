@@ -15,10 +15,10 @@ function App() {
           messagingSenderId: '249012927295',
           appId: '1:249012927295:web:035ae95584ff77d4'
         }}
-        currentUserId="rithika"
+        currentUserId="129090"
         receiver={{
-          name: 'vaishakh',
-          id: 'vaishakh',
+          name: 'Vaishakh',
+          id: '45878',
           imageUrl:
             'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
         }}
