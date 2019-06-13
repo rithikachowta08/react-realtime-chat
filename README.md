@@ -10,24 +10,24 @@
   
 ```jsx harmony
 <Chat
-        config={{
-          apiKey: 'AIzaSyBdtn-6kbnWviIeDSPEbofK8czP1u9dioM',
-          authDomain: 'chat-app-775a1.firebaseapp.com',
-          databaseURL: 'https://chat-app-775a1.firebaseio.com',
-          projectId: 'chat-app-775a1',
-          storageBucket: 'chat-app-775a1.appspot.com',
-          messagingSenderId: '249012927295',
-          appId: '1:249012927295:web:035ae95584ff77d4'
-        }}
-        currentUserId="45878"
-        receiver={{
-          name: 'Rithika',
-          id: '129090',
-          imageUrl:
-            'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
-        }}
-      />
-  ```
+  config={{
+    apiKey: 'AIzaSyBdtn-6kbnWviIeDSPEbofK8czP1u9dioM',
+    authDomain: 'chat-app-775a1.firebaseapp.com',
+    databaseURL: 'https://chat-app-775a1.firebaseio.com',
+    projectId: 'chat-app-775a1',
+    storageBucket: 'chat-app-775a1.appspot.com',
+    messagingSenderId: '249012927295',
+    appId: '1:249012927295:web:035ae95584ff77d4'
+  }}
+  currentUserId="45878"
+  receiver={{
+    name: 'Rithika',
+    id: '129090',
+    imageUrl:
+      'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
+  }}
+/>
+```
 
 ## Options
 
