@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Realtime Chat
+> One to one chat component built using Firebase's realtime database.
 
-## Available Scripts
+## Installation
+`npm install --save react-realtime-chat`
 
-In the project directory, you can run:
+## Usage
 
-### `npm start`
+- Create an app on firebase and copy the configuration object to be passed as props to the chat component.
+  
+```jsx harmony
+<Chat
+        config={{
+          apiKey: 'AIzaSyBdtn-6kbnWviIeDSPEbofK8czP1u9dioM',
+          authDomain: 'chat-app-775a1.firebaseapp.com',
+          databaseURL: 'https://chat-app-775a1.firebaseio.com',
+          projectId: 'chat-app-775a1',
+          storageBucket: 'chat-app-775a1.appspot.com',
+          messagingSenderId: '249012927295',
+          appId: '1:249012927295:web:035ae95584ff77d4'
+        }}
+        currentUserId="45878"
+        receiver={{
+          name: 'Rithika',
+          id: '129090',
+          imageUrl:
+            'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
+        }}
+      />
+  ```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Options
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+|     Params      | Value  |     Description      |
+| :-------------: | :----: | :------------------: | :---------------------------------------------------------------------------: |
+|       config       | object | Firebase configuration info of your Firebas App. Required to inititalize the Firebase SDK. |
+|      receiver       | object |  An object in the form `{name:'', id: '', imageUrl: ''}`. This contains the information of the intended recipient of messages in the chatroom. imageUrl will be used to display an avatar for the recipient. |
+|    currentUserId     | string | This is user id of the user who is currently logged into your application and is initiating the chat with the receiver. |
 
-### `npm test`
+## Links and examples
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Full example on Github: [Example](https://github.com/rithikachowta08/react-realtime-chat/tree/master/src).
 
-### `npm run build`
+- Live working demo: [Demo]().
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Tutorial on how this package was implemented : [Medium article]().
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+react-realtime-chat is released under [MIT License](https://opensource.org/licenses/MIT).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

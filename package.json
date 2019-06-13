@@ -1,9 +1,16 @@
 {
   "name": "react-realtime-chat",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "author": "Rithika Chowta <rithika.chowta08@gmail.com>",
-  "description": "Realtime one-to-one chat component made with <3 and firebase",
+  "description": "Realtime one-to-one chat component made with <3 and Firebase",
+  "keywords": [
+    "chat",
+    "realtime",
+    "live",
+    "firebase",
+    "react"
+  ],
   "dependencies": {
     "bootstrap": "^4.1.3",
     "date-fns": "^1.30.1",
@@ -30,7 +37,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rithikachowta08/react-fire-chat"
+    "url": "https://github.com/rithikachowta08/react-realtime-chat"
   },
   "devDependencies": {
     "@storybook/cli": "^4.0.8",
