@@ -30,12 +30,12 @@
 ```
 
 ## Options
-
-|     Params      | Value  |     Description      |
-| :-------------: | :----: | :------------------: | :---------------------------------------------------------------------------: |
-|       config       | object | Firebase configuration info of your Firebas App. Required to inititalize the Firebase SDK. |
-|      receiver       | object |  An object in the form `{name:'', id: '', imageUrl: ''}`. This contains the information of the intended recipient of messages in the chatroom. imageUrl will be used to display an avatar for the recipient. |
-|    currentUserId     | string | This is user id of the user who is currently logged into your application and is initiating the chat with the receiver. |
+1)  config : object
+Firebase configuration info of your Firebas App. Required to inititalize the Firebase SDK. 
+2) receiver : object 
+An object in the form `{name:'', id: '', imageUrl: ''}`. This contains the information of the intended recipient of messages in the chatroom. imageUrl will be used to display an avatar for the recipient.
+3) currentUserId : string 
+This is user id of the user who is currently logged into your application and is initiating the chat with the receiver. 
 
 ## Links and examples
 
