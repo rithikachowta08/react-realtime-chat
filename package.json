@@ -1,6 +1,6 @@
 {
   "name": "react-realtime-chat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Rithika Chowta <rithika.chowta08@gmail.com>",
   "description": "Realtime one-to-one chat component made with <3 and Firebase",
@@ -72,5 +72,17 @@
         ]
       }
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

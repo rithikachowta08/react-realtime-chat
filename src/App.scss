@@ -1,6 +1,17 @@
 .App {
   text-align: center;
   height: 90vh;
+
+  .btn {
+    padding: 10px;
+    background-color:  #3C5A99;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: none;
+    outline: none;
+    margin-top: 5px;
+    cursor: pointer;
+  }
 }
 
 
