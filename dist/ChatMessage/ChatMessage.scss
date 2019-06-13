@@ -1,0 +1,73 @@
+@import '../common.scss';
+
+.chat-message-wrapper {
+  position: relative;
+  clear: both;
+  padding: 0 15px;
+}
+
+.chat-body {
+  width: fit-content;
+  margin-left: 39px;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  position: relative;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background-color: $lightest-grey;
+  font-family: $secondary-font;
+  &:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  top: 0px;
+  left: -10px;
+	right: auto;
+	bottom: auto;
+	border: 10px solid;
+	border-color: $lightest-grey transparent transparent transparent;
+}
+}
+
+.chat-body.self {
+  float: right;
+  color: $primary-color;
+  border-radius: 8px;
+  background-color: $secondary-color;
+  &:after{
+    top: auto;
+    left: auto;
+    right: 0px;
+    bottom: -10px;
+    border: 10px solid;
+    border-color: $secondary-color $secondary-color transparent transparent;
+  }
+}
+
+.chat-header {
+  text-align: left;
+  margin-bottom: .5em;
+  font-family: $primary-font;
+  color: $grey;
+  font-size: 12px;
+}
+
+.chat-header.self {
+  text-align: right;
+}
+
+.chat-header span {
+  text-transform: uppercase;
+}
+
+.chat-header img {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 50%;
+  top: 7px;
+  height: 2em;
+  width: 2em;
+  margin-right: .8em;
+  box-shadow: 0 8px 19px 0 rgba(0, 0, 0, .1);
+}

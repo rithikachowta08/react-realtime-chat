@@ -1,0 +1,32 @@
+@import '../common.scss';
+
+.chat-input-wrapper {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: auto;
+  .chat-icon {
+    height:25px;
+    width:25px;
+    position: absolute;
+    cursor: pointer;
+    top: 13px;
+    right: 13px;
+    z-index: 1;
+  }
+  input {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    width: 100%;
+    padding: 1.2em 1.7em;
+    box-shadow: 11px 7px 15px -1px rgba(170,170,170,0.5);
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: $primary-color;
+    font-family: $primary-font;
+    color: $grey;
+  }
+  input:focus {
+    outline: none;
+  }
+}

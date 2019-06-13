@@ -1,0 +1,67 @@
+@import './common.scss';
+
+.chat-section {
+height:100%;
+box-sizing: border-box;
+padding: 2em;
+flex-direction: column;
+position: relative;
+
+.chat-messages-container {
+  height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: content-box;
+  margin-bottom: 1em;
+  scroll-behavior: smooth;
+}
+
+// loader styling
+
+.centered-container{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// no message styling
+.no-message{
+  font-size: 22px;
+  font-family: $primary-font;
+  color: $secondary-color;
+  font-weight: bold;
+}
+
+// error message styling
+.error{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-family: $primary-font;
+  color: $danger-color;
+  font-weight: bold;
+}
+
+// Scroll bar styling
+
+::-webkit-scrollbar-track
+{
+	background-color: $lightest-grey;
+}
+
+::-webkit-scrollbar
+{
+  width: 8px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: $light-grey;
+  border-radius: 10px;  
+}
+
+}

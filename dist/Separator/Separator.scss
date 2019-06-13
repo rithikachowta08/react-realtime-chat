@@ -1,0 +1,38 @@
+@import '../common.scss';
+
+.separator {
+  .hr-text {
+    box-sizing: border-box;
+    text-transform: uppercase;
+    position: relative;
+    outline: 0;
+    border: 0;
+    text-align: center;
+    height: 1.5em;
+    padding: 0 .7em;
+    line-height: 1.5em;
+    background-color: $primary-color;
+    color:$dark-grey;
+    font-family: $primary-font;    
+    font-size: 10px;
+    letter-spacing: 1.11px;
+    &:before {
+      content: '';
+      background: $light-grey;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+    }
+    &:after {
+      content: attr(data-content);
+      position: relative;
+      display: inline-block;
+      color: $grey;
+      padding: 0 .8em;
+      line-height: 1.5em;
+      background-color: $primary-color;
+    }
+  }
+}
