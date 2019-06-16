@@ -11,13 +11,13 @@
 ```jsx harmony
 <Chat
   config={{
-    apiKey: 'AIzaSyBdtn-6kbnWviIeDSPEbofK8czP1u9dioM',
-    authDomain: 'chat-app-775a1.firebaseapp.com',
-    databaseURL: 'https://chat-app-775a1.firebaseio.com',
-    projectId: 'chat-app-775a1',
-    storageBucket: 'chat-app-775a1.appspot.com',
-    messagingSenderId: '249012927295',
-    appId: '1:249012927295:web:035ae95584ff77d4'
+    apiKey: 'dummy-key',
+    authDomain: 'chat-775a1.firebaseapp.com',
+    databaseURL: 'https://chat-775a1.firebaseio.com',
+    projectId: 'chat-775a1',
+    storageBucket: 'chat-775a1.appspot.com',
+    messagingSenderId: '24901292295',
+    appId: '1:249012927295:web:0f77d4'
   }}
   currentUserId="45878"
   receiver={{

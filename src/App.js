@@ -17,6 +17,11 @@ const user2 = {
     'https://vignette.wikia.nocookie.net/gameofthrones/images/e/ee/QueenDaenerysTargaryenIronThrone.PNG/revision/latest?cb=20190520173137'
 };
 
+const userRoles = {
+  [user1.id]: 'Jon Snow',
+  [user2.id]: 'Daenerys Targaryen'
+}
+
 const App = () => {
   // Function to switch current user i.e "you" in the chat and reload the chat in the new role
   const currentUserId = localStorage.getItem('currentUserId') || user1.id;
@@ -50,6 +55,7 @@ const App = () => {
         currentUserId={currentUserId}
         receiver={getReceiver()}
       />
+      <span>You are currently in the role of: {userRoles[currentUserId]}</span>
       <button className="btn" onClick={switchRoles}>
         Switch role
       </button>
