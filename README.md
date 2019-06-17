@@ -1,10 +1,8 @@
 # React Realtime Chat
 > One to one chat component built using Firebase's realtime database.
 
-## Scripts
-
-- Installation: `npm install --save react-realtime-chat`
-- Storybook: `npm run storybook`
+## Installation
+`npm install --save react-realtime-chat`
 
 ## Usage
 
@@ -28,17 +26,25 @@
     imageUrl:
       'https://miro.medium.com/fit/c/256/256/2*XRuD351hKGF-w6TdhF0wVw.jpeg'
   }}
+  height="500px"
+  themeColor="#3C5A99"
+  textColor="#fff"
 />
 ```
 
 ## Options
 
-1) `config` : object
-Firebase configuration info of your Firebase App. Required to inititalize the Firebase SDK. 
-2) `receiver` : object 
-An object in the form `{name:'', id: '', imageUrl: ''}`. This contains the information of the intended recipient of messages in the chatroom. imageUrl will be used to display an avatar for the recipient.
-3) `currentUserId` : string 
-This is user id of the user who is currently logged into your application and is initiating the chat with the receiver. 
+|     Params      | Value  |     Description      |
+| :-------------: | :----: | :------------------: | :---------------------------------------------------------------------------: |
+|       config       | object | Firebase configuration info of your Firebase App. Required to inititalize the Firebase SDK. |
+|      receiver       | object |  An object in the form `{name:'', id: '', imageUrl: ''}`. This contains the information of the intended recipient of messages in the chatroom. imageUrl will be used to display an avatar for the recipient. |
+|    currentUserId     | string | This is user id of the user who is currently logged into your application and is initiating the chat with the receiver. |
+|    themeColor     | string | This is the theme color that will be used for your UI. Default value is #3cb3dd (blue) |
+|    textColor     | string | This is the text color that will be used in the message body. Default value is #ffffff (white) |
+|    height     | string | Sets the height of your chat window. Default value is 100% |
+|    width     | string | Sets the width of your chat window. Default value is 100% |
+|    sendIcon     | string | Image used as the send icon in the chat input field. |
+|    loader     | string | Loader image to be displayed while messages are loading. |
 
 ## Links and examples
 
