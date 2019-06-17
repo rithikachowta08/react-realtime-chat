@@ -16,6 +16,7 @@ import ACTIONS from './actions.constants';
 import ChatInput from './ChatInput/ChatInput';
 import ChatBody from './ChatBody';
 import spinner from './images/spinner.gif';
+import sendBtn from './images/send.png';
 import './Chat.scss';
 
 let dbRef;
@@ -43,7 +44,8 @@ class Chat extends Component {
       backgroundColor: props.themeColor,
       borderColor: `${props.themeColor} ${
         props.themeColor
-      } transparent transparent`
+      } transparent transparent`,
+      color: props.textColor
     };
   }
 
@@ -114,13 +116,14 @@ class Chat extends Component {
 
   render() {
     const { error, isFetching, messages } = this.props.chat;
+    const { loader, sendIcon } = this.props;
     return (
       <Provider store={store}>
         <div className="chat-section" style={this.chatStyle}>
           {error && <div className="error">Oops! Something went wrong!</div>}
           {isFetching && (
             <div className="centered-container">
-              <img src={spinner} alt="Loading messages" />
+              <img src={loader} alt="Loading messages" />
             </div>
           )}
           {!isFetching && messages && !messages.length && (
@@ -137,6 +140,7 @@ class Chat extends Component {
             changeHandler={this.updateStateOnChange}
             clickHandler={this.sendMessage}
             enterKeyHandler={this.handleKeyPress}
+            icon={sendIcon}
           />
         </div>
       </Provider>
@@ -150,13 +154,19 @@ Chat.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   height: PropTypes.string,
   width: PropTypes.string,
-  themeColor: PropTypes.string
+  themeColor: PropTypes.string,
+  textColor: PropTypes.string,
+  sendIcon: PropTypes.string,
+  loader: PropTypes.string
 };
 
 Chat.defaultProps = {
   height: '100%',
   width: '100%',
-  themeColor: '#3cb3dd'
+  themeColor: '#3cb3dd',
+  textColor: '#ffffff',
+  loader: spinner,
+  sendIcon: sendBtn
 };
 
 const connectWithStore = (store, WrappedComponent, ...args) => {

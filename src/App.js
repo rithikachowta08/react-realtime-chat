@@ -55,7 +55,8 @@ const App = () => {
         currentUserId={currentUserId}
         receiver={getReceiver()}
         height="500px"
-        themeColor="#3cb3dd"
+        themeColor="#3C5A99"
+        textColor="#fff"
       />
       <span>You are currently in the role of: {userRoles[currentUserId]}</span>
       <button className="btn" onClick={switchRoles}>

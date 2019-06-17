@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import sendBtn from '../images/send.png';
 import './ChatInput.scss';
 
 const ChatInput = props => {
@@ -18,7 +17,7 @@ const ChatInput = props => {
       />
       <img
         className="chat-icon"
-        src={sendBtn}
+        src={props.icon}
         alt="send icon"
         onClick={props.clickHandler}
       />
@@ -30,6 +29,7 @@ ChatInput.propTypes = {
   clickHandler: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
   enterKeyHandler: PropTypes.func.isRequired,
+  icon: PropTypes.string.isRequired,
   value: PropTypes.string
 };
 
