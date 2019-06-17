@@ -15,12 +15,12 @@ class ChatBody extends Component {
   }
 
   render() {
-    const { messages } = this.props;
+    const { messages, style } = this.props;
     return (
       <div className="chat-messages-container">
         {messages &&
           messages.map((message, index) => (
-            <ChatMessage key={index} {...message} />
+            <ChatMessage key={index} style={style} {...message} />
           ))}
       </div>
     );
@@ -28,11 +28,13 @@ class ChatBody extends Component {
 }
 
 ChatBody.propTypes = {
-  messages: PropTypes.array
+  messages: PropTypes.array,
+  style: PropTypes.object
 };
 
 ChatBody.defaultProps = {
-  messages: []
+  messages: [],
+  style: {}
 };
 
 export default ChatBody;

@@ -18,7 +18,7 @@ const ChatMessage = props => (
       />
     )}
     {props.fromSelf ? (
-      <MyMessageBody messageText={props.messageText} />
+      <MyMessageBody style={props.style} messageText={props.messageText} />
     ) : (
       <TheirMessageBody messageText={props.messageText} />
     )}
@@ -33,7 +33,8 @@ ChatMessage.propTypes = {
   avatarUrl: PropTypes.string,
   withHeader: PropTypes.bool,
   fromSelf: PropTypes.bool,
-  timeStamp: PropTypes.string
+  timeStamp: PropTypes.string,
+  style: PropTypes.object
 };
 
 ChatMessage.defaultProps = {
@@ -43,7 +44,8 @@ ChatMessage.defaultProps = {
   avatarUrl: '',
   timeStamp: '',
   withHeader: false,
-  fromSelf: false
+  fromSelf: false,
+  style: {}
 };
 
 export default ChatMessage;

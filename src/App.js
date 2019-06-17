@@ -20,7 +20,7 @@ const user2 = {
 const userRoles = {
   [user1.id]: 'Jon Snow',
   [user2.id]: 'Daenerys Targaryen'
-}
+};
 
 const App = () => {
   // Function to switch current user i.e "you" in the chat and reload the chat in the new role
@@ -54,8 +54,8 @@ const App = () => {
         }}
         currentUserId={currentUserId}
         receiver={getReceiver()}
-        height='500px'
-        accentColor='#ffb6c1'
+        height="500px"
+        themeColor="#3cb3dd"
       />
       <span>You are currently in the role of: {userRoles[currentUserId]}</span>
       <button className="btn" onClick={switchRoles}>

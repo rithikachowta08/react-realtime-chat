@@ -38,11 +38,17 @@ class Chat extends Component {
     this.chatStyle = {
       height: props.height,
       width: props.width
-    }
+    };
+    this.customStyle = {
+      backgroundColor: props.themeColor,
+      borderColor: `${props.themeColor} ${
+        props.themeColor
+      } transparent transparent`
+    };
   }
 
   componentDidMount() {
-    const { currentUserId, receiver,  } = this.props;
+    const { currentUserId, receiver } = this.props;
     // chat-room is always named by sender and receiver names arranged lexicographically
     this.chatRoom =
       currentUserId > receiver.id
@@ -118,11 +124,14 @@ class Chat extends Component {
             </div>
           )}
           {!isFetching && messages && !messages.length && (
-            <div className="centered-container no-message">
+            <div
+              className="centered-container no-message"
+              style={this.customStyle}
+            >
               No messages yet! Say hi!
             </div>
           )}
-          <ChatBody messages={messages} />
+          <ChatBody messages={messages} style={this.customStyle} />
           <ChatInput
             value={this.state.currentMessage}
             changeHandler={this.updateStateOnChange}
@@ -140,12 +149,14 @@ Chat.propTypes = {
   receiver: PropTypes.object.isRequired,
   currentUserId: PropTypes.string.isRequired,
   height: PropTypes.string,
-  width: PropTypes.string
+  width: PropTypes.string,
+  themeColor: PropTypes.string
 };
 
 Chat.defaultProps = {
-  height: "100%",
-  width: "100%"
+  height: '100%',
+  width: '100%',
+  themeColor: '#3cb3dd'
 };
 
 const connectWithStore = (store, WrappedComponent, ...args) => {
