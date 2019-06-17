@@ -35,10 +35,14 @@ class Chat extends Component {
     this.state = {
       currentMessage: ''
     };
+    this.chatStyle = {
+      height: props.height,
+      width: props.width
+    }
   }
 
   componentDidMount() {
-    const { currentUserId, receiver } = this.props;
+    const { currentUserId, receiver,  } = this.props;
     // chat-room is always named by sender and receiver names arranged lexicographically
     this.chatRoom =
       currentUserId > receiver.id
@@ -106,7 +110,7 @@ class Chat extends Component {
     const { error, isFetching, messages } = this.props.chat;
     return (
       <Provider store={store}>
-        <div className="chat-section">
+        <div className="chat-section" style={this.chatStyle}>
           {error && <div className="error">Oops! Something went wrong!</div>}
           {isFetching && (
             <div className="centered-container">
@@ -134,10 +138,15 @@ class Chat extends Component {
 Chat.propTypes = {
   config: PropTypes.object.isRequired,
   receiver: PropTypes.object.isRequired,
-  currentUserId: PropTypes.string.isRequired
+  currentUserId: PropTypes.string.isRequired,
+  height: PropTypes.string,
+  width: PropTypes.string
 };
 
-Chat.defaultProps = {};
+Chat.defaultProps = {
+  height: "100%",
+  width: "100%"
+};
 
 const connectWithStore = (store, WrappedComponent, ...args) => {
   var ConnectedWrappedComponent = connect(...args)(WrappedComponent);
