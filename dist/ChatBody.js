@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -11,9 +11,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _ChatMessage = _interopRequireDefault(require("./ChatMessage/ChatMessage"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -59,12 +59,15 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var messages = this.props.messages;
-      return _react["default"].createElement("div", {
+      var _this$props = this.props,
+          messages = _this$props.messages,
+          style = _this$props.style;
+      return _react.default.createElement("div", {
         className: "chat-messages-container"
       }, messages && messages.map(function (message, index) {
-        return _react["default"].createElement(_ChatMessage["default"], _extends({
-          key: index
+        return _react.default.createElement(_ChatMessage.default, _extends({
+          key: index,
+          style: style
         }, message));
       }));
     }
@@ -74,10 +77,12 @@ function (_Component) {
 }(_react.Component);
 
 ChatBody.propTypes = {
-  messages: _propTypes["default"].array
+  messages: _propTypes.default.array,
+  style: _propTypes.default.object
 };
 ChatBody.defaultProps = {
-  messages: []
+  messages: [],
+  style: {}
 };
 var _default = ChatBody;
-exports["default"] = _default;
+exports.default = _default;

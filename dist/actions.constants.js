@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var ACTIONS = {
   FETCH_CHAT: 'FETCH_CHAT',
   FETCH_CHAT_SUCCESS: 'FETCH_CHAT_SUCCESS',
@@ -12,4 +12,4 @@ var ACTIONS = {
   UPDATE_CHAT_SUCCESS: 'UPDATE_CHAT_SUCCESS'
 };
 var _default = ACTIONS;
-exports["default"] = _default;
+exports.default = _default;

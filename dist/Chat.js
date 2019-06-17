@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -35,9 +35,11 @@ var _ChatBody = _interopRequireDefault(require("./ChatBody"));
 
 var _spinner = _interopRequireDefault(require("./images/spinner.gif"));
 
+var _send = _interopRequireDefault(require("./images/send.png"));
+
 require("./Chat.scss");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -64,10 +66,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var dbRef;
-var sagaMiddleware = (0, _reduxSaga["default"])();
+var sagaMiddleware = (0, _reduxSaga.default)();
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var store = (0, _redux.createStore)((0, _redux.combineReducers)({
-  chat: _Chat["default"]
+  chat: _Chat.default
 }), composeEnhancers((0, _redux.applyMiddleware)(sagaMiddleware)));
 sagaMiddleware.run(
 /*#__PURE__*/
@@ -77,7 +79,7 @@ regeneratorRuntime.mark(function _callee() {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return (0, _rootSaga["default"])();
+          return (0, _rootSaga.default)();
 
         case 2:
         case "end":
@@ -152,6 +154,15 @@ function (_Component) {
     _this.state = {
       currentMessage: ''
     };
+    _this.chatStyle = {
+      height: props.height,
+      width: props.width
+    };
+    _this.customStyle = {
+      backgroundColor: props.themeColor,
+      borderColor: "".concat(props.themeColor, " ").concat(props.themeColor, " transparent transparent"),
+      color: props.textColor
+    };
     return _this;
   }
 
@@ -173,26 +184,33 @@ function (_Component) {
           error = _this$props$chat.error,
           isFetching = _this$props$chat.isFetching,
           messages = _this$props$chat.messages;
-      return _react["default"].createElement(_reactRedux.Provider, {
+      var _this$props2 = this.props,
+          loader = _this$props2.loader,
+          sendIcon = _this$props2.sendIcon;
+      return _react.default.createElement(_reactRedux.Provider, {
         store: store
-      }, _react["default"].createElement("div", {
-        className: "chat-section"
-      }, error && _react["default"].createElement("div", {
+      }, _react.default.createElement("div", {
+        className: "chat-section",
+        style: this.chatStyle
+      }, error && _react.default.createElement("div", {
         className: "error"
-      }, "Oops! Something went wrong!"), isFetching && _react["default"].createElement("div", {
+      }, "Oops! Something went wrong!"), isFetching && _react.default.createElement("div", {
         className: "centered-container"
-      }, _react["default"].createElement("img", {
-        src: _spinner["default"],
+      }, _react.default.createElement("img", {
+        src: loader,
         alt: "Loading messages"
-      })), !isFetching && messages && !messages.length && _react["default"].createElement("div", {
-        className: "centered-container no-message"
-      }, "No messages yet! Say hi!"), _react["default"].createElement(_ChatBody["default"], {
-        messages: messages
-      }), _react["default"].createElement(_ChatInput["default"], {
+      })), !isFetching && messages && !messages.length && _react.default.createElement("div", {
+        className: "centered-container no-message",
+        style: this.customStyle
+      }, "No messages yet! Say hi!"), _react.default.createElement(_ChatBody.default, {
+        messages: messages,
+        style: this.customStyle
+      }), _react.default.createElement(_ChatInput.default, {
         value: this.state.currentMessage,
         changeHandler: this.updateStateOnChange,
         clickHandler: this.sendMessage,
-        enterKeyHandler: this.handleKeyPress
+        enterKeyHandler: this.handleKeyPress,
+        icon: sendIcon
       })));
     }
   }]);
@@ -201,11 +219,24 @@ function (_Component) {
 }(_react.Component);
 
 Chat.propTypes = {
-  config: _propTypes["default"].object.isRequired,
-  receiver: _propTypes["default"].object.isRequired,
-  currentUserId: _propTypes["default"].string.isRequired
+  config: _propTypes.default.object.isRequired,
+  receiver: _propTypes.default.object.isRequired,
+  currentUserId: _propTypes.default.string.isRequired,
+  height: _propTypes.default.string,
+  width: _propTypes.default.string,
+  themeColor: _propTypes.default.string,
+  textColor: _propTypes.default.string,
+  sendIcon: _propTypes.default.string,
+  loader: _propTypes.default.string
 };
-Chat.defaultProps = {};
+Chat.defaultProps = {
+  height: '100%',
+  width: '100%',
+  themeColor: '#3cb3dd',
+  textColor: '#ffffff',
+  loader: _spinner.default,
+  sendIcon: _send.default
+};
 
 var connectWithStore = function connectWithStore(store, WrappedComponent) {
   for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -215,7 +246,7 @@ var connectWithStore = function connectWithStore(store, WrappedComponent) {
   var ConnectedWrappedComponent = _reactRedux.connect.apply(void 0, args)(WrappedComponent);
 
   return function (props) {
-    return _react["default"].createElement(ConnectedWrappedComponent, _extends({}, props, {
+    return _react.default.createElement(ConnectedWrappedComponent, _extends({}, props, {
       store: store
     }));
   };
@@ -231,14 +262,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchChat: function fetchChat(data) {
       dispatch({
-        type: _actions["default"].FETCH_CHAT,
+        type: _actions.default.FETCH_CHAT,
         data: data,
         dbRef: dbRef
       });
     },
     updateChatState: function updateChatState(data) {
       dispatch({
-        type: _actions["default"].UPDATE_CHAT,
+        type: _actions.default.UPDATE_CHAT,
         data: data
       });
     }
@@ -247,4 +278,4 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 var _default = connectWithStore(store, Chat, mapStateToProps, mapDispatchToProps);
 
-exports["default"] = _default;
+exports.default = _default;

@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _chatService = require("./utils/chat-service");
 
 var _actions = _interopRequireDefault(require("./actions.constants"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -36,7 +36,7 @@ var chat = function chat() {
       data = _ref.data;
 
   switch (type) {
-    case _actions["default"].FETCH_CHAT:
+    case _actions.default.FETCH_CHAT:
       {
         return _objectSpread({}, state, {
           error: '',
@@ -44,7 +44,7 @@ var chat = function chat() {
         });
       }
 
-    case _actions["default"].FETCH_CHAT_SUCCESS:
+    case _actions.default.FETCH_CHAT_SUCCESS:
       {
         var tempState = Object.assign({}, state);
 
@@ -56,7 +56,7 @@ var chat = function chat() {
         return tempState;
       }
 
-    case _actions["default"].UPDATE_CHAT_SUCCESS:
+    case _actions.default.UPDATE_CHAT_SUCCESS:
       {
         var _tempState = Object.assign({}, state);
 
@@ -71,7 +71,7 @@ var chat = function chat() {
         return _tempState;
       }
 
-    case _actions["default"].FETCH_CHAT_FAIL:
+    case _actions.default.FETCH_CHAT_FAIL:
       return _objectSpread({}, state, {
         error: payload,
         isFetching: false,
@@ -84,4 +84,4 @@ var chat = function chat() {
 };
 
 var _default = chat;
-exports["default"] = _default;
+exports.default = _default;

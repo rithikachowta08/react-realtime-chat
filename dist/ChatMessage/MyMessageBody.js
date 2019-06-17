@@ -3,22 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MyMessageBody = function MyMessageBody(props) {
-  return _react["default"].createElement("div", {
-    className: "chat-body self"
+  return _react.default.createElement("div", {
+    className: "chat-body self",
+    style: props.style
   }, props.messageText);
 };
 
 MyMessageBody.propTypes = {
-  messageText: _propTypes["default"].string.isRequired
+  messageText: _propTypes.default.string.isRequired,
+  style: _propTypes.default.object
 };
 var _default = MyMessageBody;
-exports["default"] = _default;
+exports.default = _default;

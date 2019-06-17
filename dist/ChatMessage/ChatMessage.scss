@@ -35,13 +35,14 @@
   color: $primary-color;
   border-radius: 8px;
   background-color: $secondary-color;
+  border-color: $secondary-color $secondary-color transparent transparent;
   &:after{
     top: auto;
     left: auto;
     right: 0px;
     bottom: -10px;
     border: 10px solid;
-    border-color: $secondary-color $secondary-color transparent transparent;
+    border-color: inherit;
   }
 }
 
