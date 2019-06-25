@@ -1,5 +1,8 @@
 # React Realtime Chat
-> One to one chat component built using Firebase's realtime database.
+> One to one chat component built using Firebase's realtime database. This component can be used to intialize a chat window for a user who is logged in to your application, with another user of your application.
+
+## Requirements
+A login and signup flow must already be implemented in your application. This component must be rendered only on pages where your user has already logged in. It is assumed that information regarding the receiver of the messages is already known at the time of invoking this component.
 
 ## Installation
 `npm install --save react-realtime-chat`
