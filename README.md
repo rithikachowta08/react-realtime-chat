@@ -47,7 +47,7 @@ A login and signup flow must already be implemented in your application. This co
 
 - Live working demo: [Demo](https://afternoon-wildwood-14794.herokuapp.com/).
 
-- Tutorial on how this package was implemented : [Medium article]().
+- Tutorial on how this package was implemented : [Medium article](https://medium.com/@rithikachowta/building-a-real-time-chat-application-with-react-firebase-and-redux-saga-9cbbdbc34720?postPublishedType=initial).
 
 ## License
 
